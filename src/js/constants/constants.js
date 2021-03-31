@@ -26,22 +26,55 @@ export const sources = [
 
 export const clouds = [
   {
-    width: 220,
-    height: 70,
-    x: 540,
-    y: 120,
+    params: {
+      x: 540,
+      y: 120,
+      alpha: 0,
+    },
+    styles: {
+      width: 220,
+      height: 70,
+      fill: 0xebdbae,
+      lineStyle: {
+        width: 2,
+        color: 0xffffff,
+        alpha: 1,
+      },
+    },
   },
   {
-    width: 15,
-    height: 15,
-    x: 800,
-    y: 90,
+    params: {
+      x: 800,
+      y: 90,
+      alpha: 0,
+    },
+    styles: {
+      width: 15,
+      height: 15,
+      fill: 0xebdbae,
+      lineStyle: {
+        width: 2,
+        color: 0xffffff,
+        alpha: 1,
+      },
+    },
   },
   {
-    width: 5,
-    height: 5,
-    x: 840,
-    y: 100,
+    params: {
+      x: 840,
+      y: 100,
+      alpha: 0,
+    },
+    styles: {
+      width: 5,
+      height: 5,
+      fill: 0xebdbae,
+      lineStyle: {
+        width: 2,
+        color: 0xffffff,
+        alpha: 1,
+      },
+    },
   },
 ];
 

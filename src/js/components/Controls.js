@@ -1,7 +1,5 @@
 // utils
 import BaseComponent from "../utils/BaseComponent";
-// animations
-import { fallDownAnimation } from "../animations/animations";
 
 export default class Controls extends BaseComponent {
   constructor(app, spriteLoader, hammerClickHandler) {
@@ -27,8 +25,11 @@ export default class Controls extends BaseComponent {
       position: [1160, 300],
       vy: 0,
       interactive: true,
-      animation: fallDownAnimation,
-      delay: 1500,
+      animation: {
+        params: { position: { x: 1160, y: 350 } },
+        options: { duration: 400, ease: "easeOutBounce" },
+      },
+      delay: 1200,
     });
     hammerButton.addListener("pointerdown", this._onHammerClick);
     this._hammerButton = hammerButton;

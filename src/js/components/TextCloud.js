@@ -1,7 +1,5 @@
 // constants
 import { clouds } from "../constants/constants";
-// animations
-import { fadeInAnimation } from "../animations/animations";
 // utils
 import Ellipse from "../utils/Ellipse";
 import Container from "../utils/Container";
@@ -35,7 +33,14 @@ export default class TextCloud extends BaseComponent {
 
     clouds.forEach(({ params, styles }, index) => {
       const textEllipse = new Ellipse(
-        { ...params, animation: fadeInAnimation, delay: 600 / (index + 1) },
+        {
+          ...params,
+          animation: {
+            params: { alpha: 1 },
+            options: { duration: 1000 },
+          },
+          delay: 600 / (index + 1),
+        },
         styles
       );
       _container.addChild(textEllipse);
@@ -47,7 +52,10 @@ export default class TextCloud extends BaseComponent {
       {
         alpha: 0,
         position: [350, 90],
-        animation: fadeInAnimation,
+        animation: {
+          params: { alpha: 1 },
+          options: { duration: 1000 },
+        },
         delay: 600,
       }
     );

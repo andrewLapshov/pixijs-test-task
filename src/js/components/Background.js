@@ -1,7 +1,5 @@
 // utils
 import BaseComponent from "../utils/BaseComponent";
-// animations
-import { pulseAnimation, scaleInAnimation } from "../animations/animations";
 
 export default class Background extends BaseComponent {
   constructor(app, spriteLoader) {
@@ -68,7 +66,10 @@ export default class Background extends BaseComponent {
         position: [170, 70],
         scale: [0.8],
         zIndex: 16,
-        animation: scaleInAnimation,
+        animation: {
+          params: { scale: 1 },
+          options: { ease: "easeOutElastic", duration: 500 },
+        },
         delay: 1000,
       })
     );
@@ -101,7 +102,10 @@ export default class Background extends BaseComponent {
         anchor: [0.5, 0.5],
         position: [_app.screen.width * 0.5, _app.screen.height * 0.8],
         zIndex: 14,
-        animation: pulseAnimation,
+        animation: {
+          params: { scale: 1.05 },
+          options: { repeat: true, reverse: true, duration: 900 },
+        },
       })
     );
     this.addSpritesToStage();

@@ -1,10 +1,5 @@
 // constants
 import { menuItems } from "../constants/constants";
-// animations
-import {
-  bubbleAnimation,
-  fadeInAndMoveDownAnimation,
-} from "../animations/animations";
 // utils
 import Container from "../utils/Container";
 import BaseComponent from "../utils/BaseComponent";
@@ -55,10 +50,13 @@ export default class StairMenu extends BaseComponent {
     const newStair = _spriteLoader.texture(stairId, {
       anchor: [0.5, 0.5],
       alpha: 0,
-      position: [1200 + stairX, 170 + stairY],
+      position: [1200 + stairX, 250 + stairY],
       zIndex: 9,
       stairId,
-      animation: fadeInAndMoveDownAnimation,
+      animation: {
+        params: { alpha: 1, position: { x: 1200 + stairX, y: 320 + stairY } },
+        options: { duration: 700, ease: "easeOutQuint" },
+      },
     });
 
     this.removeFromStage(this._currentStair);
@@ -110,8 +108,10 @@ export default class StairMenu extends BaseComponent {
         const menuButton = new Container(_app, {
           scale: [0],
           position: [menuItemX, menuItemY],
-
-          animation: bubbleAnimation,
+          animation: {
+            params: { scale: 1 },
+            options: { duration: 1300, ease: "easeOutElastic" },
+          },
           delay: 100 * index,
         });
 

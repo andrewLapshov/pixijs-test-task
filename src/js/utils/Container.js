@@ -1,5 +1,6 @@
 // libs
 import * as PIXI from "pixi.js";
+import { ease } from "pixi-ease";
 // utils
 import BaseNode from "./BaseNode";
 
@@ -12,22 +13,26 @@ export default class Container extends BaseNode {
   }
 
   addChild(child) {
-    const add = ({ node, animation, delay }) => {
+    const addSingleChild = (node, animation) => {
+      if (animation) {
+        if (typeof animation === "function") {
+          this._app.ticker.add(animation(node));
+        } else {
+          ease.add(node, animation.params, animation.options);
+        }
+      }
+      this.node.addChild(node);
+    };
+    const addFunc = ({ node, animation, delay }) => {
       if (delay) {
         setTimeout(() => {
-          if (animation) {
-            this._app.ticker.add(animation(node));
-          }
-          this.node.addChild(node);
+          addSingleChild(node, animation);
         }, delay);
       } else {
-        if (animation) {
-          this._app.ticker.add(animation(node));
-        }
-        this.node.addChild(node);
+        addSingleChild(node, animation);
       }
     };
 
-    Array.isArray(child) ? child.forEach(add) : add(child);
+    Array.isArray(child) ? child.forEach(addFunc) : addFunc(child);
   }
 }

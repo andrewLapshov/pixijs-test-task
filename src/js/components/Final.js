@@ -1,7 +1,5 @@
 // components
 import BaseComponent from "../utils/BaseComponent";
-// animations
-import { scaleInAnimation } from "../animations/animations";
 
 export default class Final extends BaseComponent {
   constructor(app, spriteLoader) {
@@ -16,7 +14,10 @@ export default class Final extends BaseComponent {
         position: [_app.screen.width / 2, _app.screen.height / 3],
         zIndex: 15,
         scale: [0],
-        animation: scaleInAnimation,
+        animation: {
+          params: { scale: 1 },
+          options: { ease: "easeOutBack", duration: 500 },
+        },
       })
     );
 

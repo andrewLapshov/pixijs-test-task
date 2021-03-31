@@ -1,3 +1,6 @@
+// libs
+import { ease } from "pixi-ease";
+
 export default class BaseComponent {
   constructor(app, spriteLoader) {
     this._app = app;
@@ -11,18 +14,22 @@ export default class BaseComponent {
   }
 
   addToStage({ node, animation, delay }) {
-    if (delay) {
-      setTimeout(() => {
-        if (animation) {
-          this._app.ticker.add(animation(node));
-        }
-        this._app.stage.addChild(node);
-      }, delay);
-    } else {
+    const addFunc = () => {
       if (animation) {
-        this._app.ticker.add(animation(node));
+        if (typeof animation === "function") {
+          this._app.ticker.add(animation(node));
+        } else {
+          ease.add(node, animation.params, animation.options);
+        }
       }
       this._app.stage.addChild(node);
+    };
+    if (delay) {
+      setTimeout(() => {
+        addFunc();
+      }, delay);
+    } else {
+      addFunc();
     }
   }
 

@@ -1,6 +1,6 @@
 {
   "name": "pixi-js-playrix",
-  "homepage": "https://github.com/andrewLapshov/pixijs-test-task",
+  "homepage": "https://andrewLapshov.github.io/pixijs-test-task/",
   "version": "1.0.0",
   "description": "Test project for Playrix using Pixi JS",
   "main": "src/js/index.js",

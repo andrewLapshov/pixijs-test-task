@@ -15,6 +15,7 @@
   "author": "Andrey Lapshov",
   "license": "ISC",
   "dependencies": {
+    "pixi-ease": "^3.0.7",
     "pixi.js": "^6.0.0"
   },
   "devDependencies": {
